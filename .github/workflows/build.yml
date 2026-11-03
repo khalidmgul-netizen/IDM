@@ -1,0 +1,22 @@
+name: Build Fetchly
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Swift version
+        run: swift --version
+      - name: Unit tests
+        run: swift test
+      - name: Build app bundle
+        run: ./scripts/make_app.sh
+      - name: Zip app
+        run: ditto -c -k --keepParent build/Fetchly.app Fetchly-macOS.zip
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Fetchly-macOS
+          path: Fetchly-macOS.zip
