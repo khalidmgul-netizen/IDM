@@ -2,8 +2,8 @@
 # Build Fetchly.app (run on a Mac with Xcode 15+ / Swift 5.9+; macOS 26 "Tahoe" SDK gets the Liquid Glass look automatically)
 set -euo pipefail
 cd "$(dirname "$0")/.."
-swift build -c release --product Fetchly
-BIN="$(swift build -c release --show-bin-path)/Fetchly"
+swift build -c release --product Fetchly --arch arm64 --arch x86_64
+BIN="$(swift build -c release --arch arm64 --arch x86_64 --show-bin-path)/Fetchly"
 APP="build/Fetchly.app"
 rm -rf "$APP"
 mkdir -p "$APP/Contents/MacOS" "$APP/Contents/Resources"
