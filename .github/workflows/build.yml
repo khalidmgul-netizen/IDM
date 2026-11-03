@@ -13,7 +13,7 @@ jobs:
       - name: Unit tests
         run: swift test
       - name: Build app bundle
-        run: ./scripts/make_app.sh
+        run: bash scripts/make_app.sh
       - name: Zip app
         run: ditto -c -k --keepParent build/Fetchly.app Fetchly-macOS.zip
       - uses: actions/upload-artifact@v4
