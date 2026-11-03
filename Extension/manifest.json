@@ -1,0 +1,10 @@
+{
+  "manifest_version": 3,
+  "name": "Fetchly Capture",
+  "version": "0.1.0",
+  "description": "Sends browser downloads to the Fetchly app.",
+  "permissions": ["downloads", "storage", "cookies", "contextMenus"],
+  "host_permissions": ["<all_urls>", "http://127.0.0.1:6811/*"],
+  "background": { "service_worker": "background.js" },
+  "options_page": "options.html"
+}
